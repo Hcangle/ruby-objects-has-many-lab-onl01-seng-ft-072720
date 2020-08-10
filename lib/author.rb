@@ -14,10 +14,6 @@ class Author
     @@post_count += 1
   end 
   
-  def posts
-    @posts
-  end 
-  
   def add_post_by_title(post_title)
     post = Post.new(post_title)
     add_post(post)
@@ -27,6 +23,10 @@ class Author
   def self.post_count 
     @@post_count
   end 
+  
+  def posts
+    Post.all.select {|post| post.author == self}
+  end
 end 
   
   
